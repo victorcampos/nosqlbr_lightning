@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+            <div class="span16">
+                <h2>Faça algo</h2>
+                <hr/>
+                <div class="span3">
+                    <ul class="unstyled">
+                        <li><a class="btn" id="open">Abrir</a></li>
+                        <li><a class="btn" id="show">Ver mais</a></li>
+                    </ul>
+                </div>
+                <div class="span12">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut euismod ipsum in odio iaculis in ultricies ante posuere. Nam eu erat odio, quis auctor erat. Donec pretium rutrum condimentum. Nunc feugiat odio vitae sem viverra varius. Sed id eros mi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam dapibus, erat ut lacinia semper, dolor justo vestibulum magna, quis ultricies ipsum erat scelerisque sapien. Sed malesuada neque ut leo aliquet aliquam. Phasellus quis fringilla turpis.
+                    </p>
+                    <p>
+                        Aenean sagittis velit sed augue pulvinar a semper nibh pharetra. Sed cursus lectus id risus posuere convallis. Curabitur eu felis ac enim iaculis rhoncus eget vel felis. Vestibulum sagittis arcu in mi dapibus et lacinia libero venenatis. Donec vel facilisis turpis. Vestibulum quis elit nunc, eu pretium purus. Aenean lacinia consequat massa in ornare. In in mauris nec nisi facilisis tempus.
+                    </p>
+                </div>
+            </div>
+        </div>
+{% endblock%}
+
+{% block after_scripts %}
+<script type="text/javascript">
+var page_data = { id : "{{ page_id }}" };
+
+$(document).ready(function() {
+   $(".btn").click(function(e) {
+      e.preventDefault();
+
+      var cross_script = $("<script type=\"text/javascript\" src=\"" + getCrossScriptSource(this.id) + "\"><\/script>");
+      $(document.body).append(cross_script);
+   });
+});
+
+var getCrossScriptSource = function(page_id) {
+    var url = "/log/" + page_data.id + "/" + page_id;
+
+    return url;
+}
+</script>
+{% endblock %}

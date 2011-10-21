@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Métricas!</h1>
+    <hr/>
+    <div class="span5">
+        <form id="metrics_param">
+            <fieldset>
+                <div class="clearfix big">
+                    <input type="text" class="span1" name="id" value="ID"/> <input class="small" name="start" value="2011-10-20"/> até <input class="small" name="end" value="2011-10-21"/>
+                </div>
+                <div class="clearfix big">
+                    <input type="button" class="btn primary" value="Métricas" id="btn_get_metrics" /> <input type="button" class="btn" value="Limpar" id="btn_clean" />
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <div class="span10" id="table_container">
+        {% include "table.html" %}
+    </div>
+{% endblock %}
+
+{% block after_scripts %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#btn_get_metrics").click(function(){
+                var metrics_params = $("#metrics_param").serialize();
+
+                $.get("/metrics/get?" + metrics_params, function(data) {
+                    $("#table_container").html(data);
+
+                })
+            });
+
+            $("#btn_clean").click(function() {
+                $("#table_container").empty();
+            });
+        });
+    </script>
+{% endblock %}

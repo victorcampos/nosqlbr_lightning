@@ -1,0 +1,24 @@
+{% load hash %}
+
+<table>
+    <thead>
+        <td><strong>Data</strong></td>
+        {% for action in actions %}
+        <td><strong>"{{ action }}"</strong></td>
+        {% endfor %}
+    </thead>
+    {% for summary_line in summary %}
+    <tr>
+        <td>{{ summary_line.date }}</td>
+        {% for action in actions %}
+            {% with summary_line.total|hash:action as total_action %}
+            {% if total_action %}
+                <td>{{ total_action }}</td>
+            {% else %}
+                <td>0</td>
+            {% endif %}
+            {% endwith %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>

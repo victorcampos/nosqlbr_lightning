@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <script type="text/javascript" src="/static/jquery.js"></script>
+</head>
+<body style="padding-top: 44px;">
+
+    <div class="topbar" >
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand big" href="#"><span class="blue">no</span>:<span class="yellow">sql</span>(<span class="green">br</span>)</a>
+          <ul class="nav">
+            <li><a href="/">Início</a></li>
+            <li><a href="/metrics">Métricas</a></li>
+            <li><a href="/content/1">Conteúdo 1</a></li>
+            <li><a href="/content/2">Conteúdo 2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block after_scripts %}{% endblock %}
+</body>
+</html>
